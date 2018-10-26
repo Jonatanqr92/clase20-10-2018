@@ -13,6 +13,7 @@ import { ApiProvider } from '../providers/api/api';
 import { HttpClientModule } from '@angular/common/http';
 import { ListsPage } from '../pages/list/list';
 import { CreateListPage } from '../pages/create-list/create-list';
+import { ItemsPage } from '../pages/items/items';
 
 
 
@@ -23,7 +24,8 @@ import { CreateListPage } from '../pages/create-list/create-list';
     LoginPage,
     RegisterPage,
     ListsPage,
-    CreateListPage
+    CreateListPage,
+    ItemsPage,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { CreateListPage } from '../pages/create-list/create-list';
     LoginPage,
     RegisterPage,
     ListsPage,
-    CreateListPage
+    CreateListPage,
+    ItemsPage,
   ],
   providers: [
     StatusBar,

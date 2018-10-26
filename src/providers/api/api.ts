@@ -46,14 +46,14 @@ export class ApiProvider {
     return this.http.post(`${this.url}/v1/list`, {
       list: params
     }, {
-      headers: {
-        'Authorization': this.token
-      }
-    }).pipe(map((response: any) => {
-      return true;
-    }), catchError((error: HttpErrorResponse) => {
-      return Observable.of(false);
-    }))
+        headers: {
+          'Authorization': this.token
+        }
+      }).pipe(map((response: any) => {
+        return true;
+      }), catchError((error: HttpErrorResponse) => {
+        return Observable.of(false);
+      }))
   }
   public getLists(): Observable<any> {
     return this.http.get(`${this.url}/v1/list`, {
@@ -61,8 +61,8 @@ export class ApiProvider {
         'Authorization': this.token
       }
     });
-}
- // Crear funciones para guardar y cargar el token de la memoria
+  }
+  // Crear funciones para guardar y cargar el token de la memoria
   private saveToken(): void {
     localStorage.setItem('token', this.token);
   }
@@ -72,5 +72,43 @@ export class ApiProvider {
   }
   public isAuth(): boolean {
     return this.token ? true : false;
-}
-}
+  }
+  public getItems(list): Observable<any> {
+    return this.http.get(`${this.url}/v1/list/${list.id}/item`, {
+      headers: {
+        'Authorization': this.token
+      }
+
+      
+    });
+  }
+
+  public finishItem(item, list): Observable<boolean> {
+    return this.http.patch(`${this.url}/v1/list/${list.id}/item/${item.id}`, {
+      item: {
+        status: true
+      }
+    }, {
+      headers: {
+        'Authorization': this.token
+      }
+    }).pipe(map((response: any) => {
+      return true;
+    }), catchError((error: HttpErrorResponse) => {
+      return Observable.of(false);
+    }));
+  }
+  public createItem(params, list): Observable<boolean> {
+    return this.http.post(`${this.url}/v1/list/${list.id}/item`, {
+      item: params
+    }, {
+      headers: {
+        'Authorization': this.token
+      }
+    }).pipe(map((response: any) => {
+      return true;
+    }), catchError((error: HttpErrorResponse) => {
+      return Observable.of(false);
+    }))
+  }
+  }

@@ -15,7 +15,7 @@
         <ion-list-header>
             Listas Disponibles
         </ion-list-header>
-        <button ion-item *ngFor="let list of lists">{{list.name}}</button>
+        <button ion-item *ngFor="let list of lists" (click)="goToList(list)">{{list.name}}</button>
     </ion-list>
     <ion-fab right bottom>
         <button ion-fab (click)="addList()">

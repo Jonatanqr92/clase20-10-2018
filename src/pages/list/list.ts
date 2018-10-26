@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { CreateListPage } from '../create-list/create-list';
+import { ItemsPage } from '../items/items';
 
 @Component({
   selector: 'page-list',
@@ -31,6 +32,11 @@ export class ListsPage {
     modal.present();
     modal.onDidDismiss(() => {
       this.refreshLists();
+    });
+  }
+  public goToList(list: any): void {
+    this.navCtrl.push(ItemsPage, {
+      list: list
     });
   }
 }
